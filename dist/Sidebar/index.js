@@ -28,7 +28,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
     scrollview: {
       padding: theme.spacing(1.5, 1.5, 2, 1.5),
       overflowY: "auto",
-      maxHeight: "85%",
+      height: "calc(100vh - 60px)",
       "&::-webkit-scrollbar": {
         width: "10px",
         borderRadius: 5
@@ -50,9 +50,9 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       backgroundColor: "white",
       marginTop: 20,
       borderRadius: theme.shape.borderRadius,
-      fontSize: 11,
+      fontSize: 12,
       lineHeight: 3,
-      width: "calc(100% - 40px)",
+      // width: "calc(100% - 0px)",
       justifyContent: "flex-start",
       fontFamily: "'Lexend Deca', sans-serif",
       cursor: "grab",
@@ -69,19 +69,21 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
     },
     icon: {
       backgroundColor: "#F0F0F0",
+      margin: "4px 0px",
       marginRight: 15,
       padding: 6,
-      width: 20,
-      height: 20,
+      width: 28,
+      height: 28,
+      fontSize: 16,
       borderRadius: 50
     },
     header: {
       display: "flex",
-      maxHeight: "20%",
       backgroundColor: "white",
       lineHeight: 2,
+      height: "60px",
       fontFamily: "'Lexend Deca', sans-serif",
-      padding: theme.spacing(1, 2),
+      padding: theme.spacing(2, 2),
       borderRadius: theme.spacing(2, 0, 0, 0),
       borderBottom: "1px solid rgba(0, 0, 0, 0.1)"
     }
@@ -96,11 +98,13 @@ function Sidebar(_ref) {
     className: classes.root
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: classes.header
-  }, /*#__PURE__*/_react.default.createElement(_icons.Ballot, {
-    className: classes.icon,
+  }, /*#__PURE__*/_react.default.createElement(_icons.Ballot // className={classes.icon}
+  , {
     fontSize: "small",
     style: {
-      color: "dodgerblue"
+      color: "dodgerblue",
+      fontSize: 28,
+      marginRight: 10
     }
   }), " ", "Fields"), /*#__PURE__*/_react.default.createElement("div", {
     className: classes.scrollview

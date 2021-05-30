@@ -77,39 +77,35 @@ function Alert(props) {
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     root: {
-      backgroundColor: "#D4D4D4" // padding: "40px",
-
-    },
-    paper: {// borderRadius: theme.spacing(2),
+      height: "inherit",
+      width: "inherit"
     },
     item: {
-      height: "100vh"
+      height: "inherit"
     },
     row: {
       display: "flex",
       flexDirection: "row"
     },
     main: {
-      height: "100%",
-      width: "100%",
-      backgroundColor: "#F9F9F9",
-      borderRadius: theme.spacing(0, 2, 2, 0)
+      height: "inherit",
+      width: "inherit"
     },
     header: {
       display: "flex",
-      maxHeight: "20%",
       backgroundColor: "white",
       lineHeight: 2,
+      height: 60,
+      justifyContent: "space-between",
       fontFamily: "'Lexend Deca', sans-serif",
-      padding: theme.spacing(1, 2),
+      padding: theme.spacing(2, 2),
       borderRadius: theme.spacing(0, 2, 0, 0),
       borderBottom: "1px solid rgba(0, 0, 0, 0.1)"
     },
     content: {
       padding: "20px 40px",
       overflowY: "auto",
-      maxHeight: "75%",
-      minHeight: "75%",
+      height: "calc(100vh - 60px)",
       "&::-webkit-scrollbar": {
         width: "10px",
         borderRadius: 5
@@ -127,15 +123,26 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
     },
     saveBtn: {
       color: "white",
-      borderRadius: theme.spacing(5),
+      borderRadius: theme.shape.borderRadius,
       backgroundColor: "dodgerblue",
-      margin: theme.spacing(2.5, 1.5),
+      margin: theme.spacing(0, 0.5),
+      padding: theme.spacing(0, 1),
+      fontSize: 11,
       fontFamily: "'Lexend Deca', sans-serif",
       opacity: 0.8,
       "&:hover": {
         opacity: 1,
-        backgroundColor: "dodgerblue"
+        backgroundColor: "dodgerblue",
+        color: "white"
       }
+    },
+    dragHere: {
+      border: "1px dashed blue",
+      padding: 20,
+      display: "flex",
+      justifyContent: "center",
+      margin: "5px 20px",
+      fontFamily: "'Lexend Deca', sans-serif"
     }
   };
 });
@@ -146,8 +153,14 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
  */
 
 function FormBuilder(_ref) {
-  var className = _ref.className,
-      style = _ref.style;
+  var _ref$title = _ref.title,
+      title = _ref$title === void 0 ? "Form Builder" : _ref$title,
+      className = _ref.className,
+      style = _ref.style,
+      _ref$onChange = _ref.onChange,
+      onChange = _ref$onChange === void 0 ? function (e) {
+    return null;
+  } : _ref$onChange;
 
   // state of forbuilder
   var _useState = (0, _react.useState)([]),
@@ -292,18 +305,18 @@ function FormBuilder(_ref) {
 
       fileReader.readAsText(file);
     }
-  }; // it wraps, sidebar along with its content, main drop area
+  };
 
+  (0, _react.useEffect)(function () {
+    onChange(form); // eslint-disable-next-line
+  }, [form]); // it wraps, sidebar along with its content, main drop area
 
   return (
     /*#__PURE__*/
     // <Grid container spacing={3}>
     _react.default.createElement("div", {
-      className: [classes.root, className].join(' '),
+      className: [classes.root, className].join(" "),
       style: style
-    }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
-      elevation: 2,
-      className: classes.paper
     }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       container: true,
       spacing: 0,
@@ -327,36 +340,15 @@ function FormBuilder(_ref) {
       lg: 9,
       xl: 9,
       className: classes.item
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.main,
-      onDragOver: onDragOver,
-      onDrop: onDrop,
-      draggable: false
+    }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
+      container: true,
+      direction: "column",
+      alignItems: "stretch"
+    }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
+      item: true
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: classes.header
-    }, "Form Builder"), previewMode ? /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.content
-    }, /*#__PURE__*/_react.default.createElement(_Form.default, {
-      src: getJson(),
-      onChange: function onChange(e) {
-        return console.log(e);
-      }
-    })) : /*#__PURE__*/_react.default.createElement(_reactSortablejs.ReactSortable, {
-      list: form,
-      setList: setForm,
-      animation: 1000,
-      className: classes.content
-    }, form.map(function (group, index) {
-      return /*#__PURE__*/_react.default.createElement(_InputGroup.default, {
-        key: group.id,
-        input: group,
-        index: index,
-        maxIndex: maxIndex,
-        onDelete: deleteInputGrp,
-        onReArrange: reArrange,
-        onEdit: editInputGrp
-      });
-    })), /*#__PURE__*/_react.default.createElement("div", {
+    }, /*#__PURE__*/_react.default.createElement("span", null, title), /*#__PURE__*/_react.default.createElement("div", {
       className: classes.row,
       style: {
         justifyContent: "space-between"
@@ -393,7 +385,10 @@ function FormBuilder(_ref) {
     }, "Upload Json", /*#__PURE__*/_react.default.createElement("input", {
       type: "file",
       onChange: handleJSON,
-      hidden: true
+      hidden: true,
+      style: {
+        display: "none"
+      }
     }))), /*#__PURE__*/_react.default.createElement(_core.IconButton, {
       variant: "outlined",
       component: "label",
@@ -407,10 +402,39 @@ function FormBuilder(_ref) {
       }
     }, /*#__PURE__*/_react.default.createElement(_icons.Visibility, {
       style: {
-        fontSize: 14,
-        padding: 5
+        fontSize: 28,
+        padding: 6
       }
-    })))))), /*#__PURE__*/_react.default.createElement(_core.Snackbar, {
+    }))))), /*#__PURE__*/_react.default.createElement(_core.Grid, {
+      item: true
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.main,
+      onDragOver: onDragOver,
+      onDrop: onDrop,
+      draggable: false
+    }, previewMode ? /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.content
+    }, /*#__PURE__*/_react.default.createElement(_Form.default, {
+      src: getJson(),
+      onChange: function onChange(e) {
+        return console.log(e);
+      }
+    })) : /*#__PURE__*/_react.default.createElement(_reactSortablejs.ReactSortable, {
+      list: form,
+      setList: setForm,
+      animation: 1000,
+      className: classes.content
+    }, form.map(function (group, index) {
+      return /*#__PURE__*/_react.default.createElement(_InputGroup.default, {
+        key: group.id,
+        input: group,
+        index: index,
+        maxIndex: maxIndex,
+        onDelete: deleteInputGrp,
+        onReArrange: reArrange,
+        onEdit: editInputGrp
+      });
+    }))))))), /*#__PURE__*/_react.default.createElement(_core.Snackbar, {
       anchorOrigin: {
         vertical: "bottom",
         horizontal: "left"
@@ -425,7 +449,10 @@ function FormBuilder(_ref) {
       onClose: function onClose() {
         return setNotification(false);
       },
-      severity: "error"
-    }, "Json Validation Errors", " "))))
+      severity: "error",
+      style: {
+        fontSize: 16
+      }
+    }, "Json Validation Errors")))
   );
 }

@@ -289,7 +289,7 @@ function InputGroup(_ref) {
       style: {
         color: "#035162",
         fontSize: 20,
-        padding: 15
+        margin: "14px 5px"
       }
     }), /*#__PURE__*/_react.default.createElement(_core.TextField, {
       className: classes.childInput,
