@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     borderRadius: theme.shape.borderRadius,
     "& .MuiTypography-root": {
+      padding: 5,
       fontFamily: "'Lexend Deca', sans-serif",
       fontSize: 14,
     },
@@ -21,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     fontFamily: "'Lexend Deca', sans-serif",
     fontSize: 14,
-    padding: "20px 0px",
   },
 }));
 
