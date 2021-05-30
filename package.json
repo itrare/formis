@@ -1,11 +1,7 @@
 {
   "name": "@itrare/formis",
   "version": "0.1.2",
-  "babel": {
-    "presets": [
-      "@babel/preset-react"
-    ]
-  },
+  "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/itrare"
   },
@@ -16,25 +12,29 @@
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@material-ui/pickers": "^3.3.10",
     "@material-ui/styles": "^4.11.4",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "ajv": "^8.5.0",
     "date-fns": "^2.22.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
     "react-sortablejs": "^6.0.0",
-    "sortablejs": "^1.13.0",
-    "uuid": "^8.3.2",
-    "web-vitals": "^1.0.1"
+    "sortablejs": "^1.13.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "mkdir dist && babel lib/ -d dist --copy-files --plugins inline-react-svg"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/env"
+    ],
+    "ignore": [
+      "**/*.test.js",
+      "**/stories.js",
+      "**/*.stories.js"
+    ]
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -52,5 +52,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-plugin-inline-react-svg": "^1.1.2",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "prettier": "1.17.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "react-test-renderer": "^16.5.2"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.x"
   }
 }
