@@ -80,7 +80,11 @@ function RadioGroup(_ref) {
     return /*#__PURE__*/_react.default.createElement(_FormControlLabel.default, {
       key: option.name,
       value: option.name,
-      control: /*#__PURE__*/_react.default.createElement(_Radio.default, null),
+      control: /*#__PURE__*/_react.default.createElement(_Radio.default, {
+        style: {
+          color: "dodgerblue"
+        }
+      }),
       label: option.name,
       className: classes.typography
     });

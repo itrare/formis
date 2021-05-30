@@ -49,14 +49,14 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       width: "100%",
       borderRadius: theme.shape.borderRadius,
       "& .MuiTypography-root": {
+        padding: 5,
         fontFamily: "'Lexend Deca', sans-serif",
         fontSize: 14
       }
     },
     typography: {
       fontFamily: "'Lexend Deca', sans-serif",
-      fontSize: 14,
-      padding: "20px 0px"
+      fontSize: 14
     }
   };
 });
