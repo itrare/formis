@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   scrollview: {
     padding: theme.spacing(1.5, 1.5, 2, 1.5),
     overflowY: "auto",
-    maxHeight: "85%",
+    height: "calc(100vh - 60px)",
     "&::-webkit-scrollbar": {
       width: "10px",
       borderRadius: 5,
@@ -37,9 +37,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     marginTop: 20,
     borderRadius: theme.shape.borderRadius,
-    fontSize: 11,
+    fontSize: 12,
     lineHeight: 3,
-    width: "calc(100% - 40px)",
+    // width: "calc(100% - 0px)",
     justifyContent: "flex-start",
     fontFamily: "'Lexend Deca', sans-serif",
     cursor: "grab",
@@ -57,19 +57,21 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     backgroundColor: "#F0F0F0",
+    margin: "4px 0px",
     marginRight: 15,
     padding: 6,
-    width: 20,
-    height: 20,
+    width: 28,
+    height: 28,
+    fontSize: 16,
     borderRadius: 50,
   },
   header: {
     display: "flex",
-    maxHeight: "20%",
     backgroundColor: "white",
     lineHeight: 2,
+    height: "60px",
     fontFamily: "'Lexend Deca', sans-serif",
-    padding: theme.spacing(1, 2),
+    padding: theme.spacing(2, 2),
     borderRadius: theme.spacing(2, 0, 0, 0),
     borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
   },
@@ -81,9 +83,9 @@ export default function Sidebar({ onDragStart, onDragOver }) {
     <div className={classes.root}>
       <div className={classes.header}>
         <Ballot
-          className={classes.icon}
+          // className={classes.icon}
           fontSize="small"
-          style={{ color: "dodgerblue" }}
+          style={{ color: "dodgerblue", fontSize: 28, marginRight: 10 }}
         />{" "}
         Fields
       </div>

@@ -52,7 +52,7 @@ export default function RadioGroup({ name, value, onChange, choices }) {
             <FormControlLabel
               key={option.name}
               value={option.name}
-              control={<Radio />}
+              control={<Radio style={{ color: "dodgerblue" }} />}
               label={option.name}
               className={classes.typography}
             />

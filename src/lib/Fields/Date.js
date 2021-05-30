@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 2,
     borderRadius: theme.shape.borderRadius,
     "& .MuiInput-root": {
+      padding: 8,
+      fontSize: 14,
+      fontFamily: "'Lexend Deca', sans-serif",
       border: "1px solid rgba(0, 0, 0, 0.3)",
       "&": {
         borderColor: "rgb(33, 150, 243)",

@@ -18,7 +18,8 @@
     "sortablejs": "^1.13.0"
   },
   "scripts": {
-    "build": "mkdir dist && babel lib/ -d dist --copy-files --plugins inline-react-svg"
+    "start": "react-scripts start",
+    "build": "mkdir dist && babel src/lib/ -d dist --copy-files --plugins inline-react-svg"
   },
   "babel": {
     "presets": [

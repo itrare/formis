@@ -280,7 +280,7 @@ export default function InputGroup({
                       style={{
                         color: "#035162",
                         fontSize: 20,
-                        padding: 15,
+                        margin: "14px 5px",
                       }}
                     />
                     <TextField
